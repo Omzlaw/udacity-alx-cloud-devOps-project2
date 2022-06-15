@@ -2,5 +2,25 @@
 	{
 		"ParameterKey": "EnvironmentName",
 		"ParameterValue": "UdacityProject"
+	},
+	{
+		"ParameterKey": "LaunchConfigurationImageId",
+		"ParameterValue": "ami-0022f774911c1d690"
+	},
+	{
+		"ParameterKey": "LaunchConfigurationInstanceType",
+		"ParameterValue": "t3.medium"
+	},
+	{
+		"ParameterKey": "AutoScalingMinSize",
+		"ParameterValue": "4"
+	},
+	{
+		"ParameterKey": "AutoScalingMaxSize",
+		"ParameterValue": "6"
+	},
+	{
+		"ParameterKey": "UserData",
+		"ParameterValue": "apt-get update -y\napt-get install apache2 -y\nsystemctl start apache2.service\ncd /var/www/html\naws s3 sync s3://my_11640059212_udagram_bucket ."
 	}
 ]
