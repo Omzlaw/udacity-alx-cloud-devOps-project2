@@ -25,10 +25,6 @@ Parameters:
     Type: String
     Default: 10.0.2.0/24
 
-  UserData:
-    Description: Command line/powershell code to run after instance creation
-    Type: String
-
 Resources:
   # instace profile contains the IAM Role name(s) that we want to associate to our auto scaling EC2 Servers
   # never give too much permissions to your EC2 instances! if they get hacked, the permissions get hacked also!
@@ -99,10 +95,17 @@ Resources:
     Properties:
       UserData:
         Fn::Base64: !Sub |
-          !Ref UserData
+          #!/bin/bash
+          apt-get update -y
+          apt-get install apache2 -y
+          systemctl start apache2.service
+          sudo apt-get install awscli -y
+          cd /var/www/html
+          aws s3 sync s3://my11640059212udagrambucket .
+
+          
       ImageId: !Ref LaunchConfigurationImageId
       IamInstanceProfile: !Ref ProfileWithRolesForOurApp
-      KeyName: udagram_server_keypair
       SecurityGroups:
         - Ref: "ServerSecurityGroup"
       InstanceType: !Ref LaunchConfigurationInstanceType
@@ -225,7 +228,7 @@ Outputs:
 #Here it is:
 #
 #          #!/bin/bash
-#          apt-get update -y
+#          sudo yum update -y
 #          apt-get install apache2 -y
 #          systemctl start apache2.service
 #          cd /var/www/html

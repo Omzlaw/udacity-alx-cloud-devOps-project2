@@ -1,30 +1,22 @@
 [
-	{
-		"ParameterKey": "EnvironmentName",
-		"ParameterValue": "UdacityProject"
-	},
-	{
-		"ParameterKey": "LaunchConfigurationImageId",
-		"ParameterValue": "ami-0022f774911c1d690"
-	},
-	{
-		"ParameterKey": "LaunchConfigurationInstanceType",
-		"ParameterValue": "t3.medium"
-	},
-	{
-		"ParameterKey": "AutoScalingMinSize",
-		"ParameterValue": "4"
-	},
-	{
-		"ParameterKey": "AutoScalingMaxSize",
-		"ParameterValue": "6"
-	},
-	{
-		"ParameterKey": "UserData",
-		"ParameterValue": "#!/bin/bash\napt-get update -y\napt-get install apache2 -y\nsystemctl start apache2.service\ncd /var/www/html\necho 'Udacity Demo Web Server Up and Running!' > index.html"
-	},
-	{
-		"ParameterKey": "UserDataWithS3",
-		"ParameterValue": "apt-get update -y\napt-get install apache2 -y\nsystemctl start apache2.service\ncd /var/www/html\naws s3 sync s3://my_11640059212_udagram_bucket ."
-	}
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "UdacityProject"
+  },
+  {
+    "ParameterKey": "LaunchConfigurationImageId",
+    "ParameterValue": "ami-0729e439b6769d6ab"
+  },
+  {
+    "ParameterKey": "LaunchConfigurationInstanceType",
+    "ParameterValue": "t3.medium"
+  },
+  {
+    "ParameterKey": "AutoScalingMinSize",
+    "ParameterValue": "4"
+  },
+  {
+    "ParameterKey": "AutoScalingMaxSize",
+    "ParameterValue": "6"
+  }
 ]
